@@ -26,6 +26,10 @@ This repository is for documenting about Metatron Discovery Install.
   ```sh
     cp -r _build/html/* docs/
   ```
+* Refactory
+    remove _static folder
+    refactor > rename : _static => static
+    copy static => _static
 * Update
   ```sh
     git add .

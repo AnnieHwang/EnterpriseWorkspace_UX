@@ -125,7 +125,7 @@ html_static_path = ['_static']
 #
 # html_sidebars = {}
 
-html_logo = "./_static/img/logo.png"
+html_logo = "./_static/img/logo2.png"
 
 
 
