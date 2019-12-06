@@ -7,7 +7,7 @@ This repository is for documenting about Metatron Discovery Install.
   
 * Clone this repository
   ```sh
-     git clone https://github.com/metatron-app/metatron-doc-discovery.git
+     git clone https://github.com/AnnieHwang/metatron-doc-install.git
   ```
 * Install packages
   ```sh
