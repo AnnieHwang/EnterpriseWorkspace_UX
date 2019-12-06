@@ -26,10 +26,13 @@ This repository is for documenting about Metatron Discovery Install.
   ```sh
     cp -r _build/html/* docs/
   ```
-* Refactory
-    remove _static folder
-    refactor > rename : _static => static
-    copy static => _static
+* Refactor (for web)
+  ```sh
+    rm -f docs/_static
+    rm -f docs/_image
+    refactor > rename(by intellij): _static => static,  _image => image
+    cp -r docs/static/* docs/_static
+  ```  
 * Update
   ```sh
     git add .
