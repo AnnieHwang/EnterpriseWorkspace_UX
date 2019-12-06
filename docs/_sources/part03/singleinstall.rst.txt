@@ -1,4 +1,4 @@
-분산 환경 Install
+싱글 환경(로컬) Install
 ---------------------------------------------
 Step1. Build
 =====================================================
@@ -64,7 +64,7 @@ Step2. Deploy
        $ cd druid
        $ ./start-single.sh | ./stop-single.sh
 
-- 로그를 확인하시려면, log/single.log 파일을 확인해주세요. (2017-08-08T07:00:45,071 INFO [main] org.eclipse.jetty.server.Server - Started @11120ms 가 나타나면 성공)
+로그를 확인하시려면, log/single.log 파일을 확인해주세요. (2017-08-08T07:00:45,071 INFO [main] org.eclipse.jetty.server.Server - Started @11120ms 가 나타나면 성공)
 ※ 추후 바이너리가 배포 되면 압축해제 후, 3번 수행사항을 제외하고 반복하시면됩니다.
 
 Step3. 접속확인

@@ -20,7 +20,7 @@ mysql 또는 mariadb (5.5 기준) 를 설치하거나 사전에 설치한 곳에
     * user : druid
     * password : druid
 
-    .. code-block:: jproperties
+    .. code-block:: console
        :linenos:
 
         create database druid CHARACTER SET utf8;
@@ -39,7 +39,7 @@ Zookeper
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 분산 코디네이터 역할을 위해 Apache Zookeeper 설치. 별도 운영상 가이드 없고, 3대 이상으로 설치 합니다.
 
-    .. code-block:: jproperties
+    .. code-block:: console
        :linenos:
 
         curl http://www.gtlib.gatech.edu/pub/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz -o zookeeper-3.4.10.tar.gz

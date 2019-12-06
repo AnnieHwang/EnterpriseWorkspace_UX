@@ -207,13 +207,13 @@
 <li>user : druid</li>
 <li>password : druid</li>
 </ul>
-<div class="highlight-jproperties"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-console"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span> create database druid CHARACTER SET utf8;
- grant all privileges on druid.* TO druid@localhost identified by &#39;druid&#39;;
- grant all privileges on druid.* TO druid@&#39;%&#39; identified by &#39;druid&#39;;
- flush privileges;
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="go"> create database druid CHARACTER SET utf8;</span>
+<span class="go"> grant all privileges on druid.* TO druid@localhost identified by &#39;druid&#39;;</span>
+<span class="go"> grant all privileges on druid.* TO druid@&#39;%&#39; identified by &#39;druid&#39;;</span>
+<span class="go"> flush privileges;</span>
 </pre></div>
 </td></tr></table></div>
 </div></blockquote>
@@ -233,15 +233,15 @@
 <h3>설정<a class="headerlink" href="#id2" title="제목 주소">¶</a></h3>
 <p>분산 코디네이터 역할을 위해 Apache Zookeeper 설치. 별도 운영상 가이드 없고, 3대 이상으로 설치 합니다.</p>
 <blockquote>
-<div><div class="highlight-jproperties"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div><div class="highlight-console"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span> curl http://www.gtlib.gatech.edu/pub/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz -o zookeeper-3.4.10.tar.gz
- tar -xzf zookeeper-3.4.10.tar.gz
- cd zookeeper-3.4.10
- cp conf/zoo_sample.cfg conf/zoo.cfg
- ./bin/zkServer.sh start
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="go"> curl http://www.gtlib.gatech.edu/pub/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz -o zookeeper-3.4.10.tar.gz</span>
+<span class="go"> tar -xzf zookeeper-3.4.10.tar.gz</span>
+<span class="go"> cd zookeeper-3.4.10</span>
+<span class="go"> cp conf/zoo_sample.cfg conf/zoo.cfg</span>
+<span class="go"> ./bin/zkServer.sh start</span>
 </pre></div>
 </td></tr></table></div>
 </div></blockquote>
