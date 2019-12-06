@@ -36,7 +36,7 @@ Metatron Discovery에 필요함
 
 Step7. Kafka
 ===================================
-Metatron Discovery 내 Engine Monitoring을 위해 필요함. 실시간 데이터 처리 시를 위해 필요함
+Metatron Discovery 내 Engine Monitoring을 위해서 혹은 실시간 데이터 처리 시를 위해 필요함
 
 Step8. Spark (Option)
 ===================================

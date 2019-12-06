@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="../static/css/layout.css" type="text/css" />
     <link rel="index" title="색인" href="../genindex.html" />
     <link rel="search" title="검색" href="../search.html" />
-    <link rel="next" title="Install" href="install.html" />
+    <link rel="next" title="Version" href="version.html" />
     <link rel="prev" title="Install" href="../part02/install.html" /> 
 
   
@@ -92,7 +92,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../part01/index.html">기본 환경(어플리케이션)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../part02/index.html">Hadoop</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Metatron Engine (Druid)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version.html">Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html">분산 환경 Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singleinstall.html">분산 환경 Install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="console.html">Console</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ingestion.html">Ingestion</a></li>
 </ul>
@@ -168,21 +170,24 @@
 <h1>Metatron Engine (Druid)<a class="headerlink" href="#metatron-engine-druid" title="제목 주소">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html#id1">버젼</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="install.html#id2">버젼호환 테스트</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">Version</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="version.html#id1">버젼</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="version.html#id2">버젼호환 테스트</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#configure-directories-in-hdfs-as-below">1.Configure directories in hdfs as below</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#download-customized-druid-unzip">2.Download customized Druid &amp; Unzip</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#download-deploy-template-shell-unzip">3.Download deploy template shell &amp; Unzip</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#ansible-host-setting">4.Ansible  Host Setting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#modify-deploy-environment-shell">5.Modify deploy environment shell</a><ul>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">분산 환경 Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#step1-configure-directories-in-hdfs-as-below">Step1. Configure directories in hdfs as below</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#step2-metatron-engine-druid">Step2. Metatron Engine(Druid) 다운로드</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#step3-download-deploy-template-shell-unzip">Step3. Download deploy template shell &amp; Unzip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#step4-ansible-host">Step4. Ansible Host 설정</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#step5-modify-deploy-environment-shell-druid-env-sh">Step5. Modify deploy environment shell : Druid배포를 위한 설정 정보 변경 (env.sh)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="install.html#druid-dist-druid-dist-v2-env-sh">./druid_dist/druid_dist_v2/env.sh</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#create-necessary-directory-by-shell">6.Create necessary directory by shell</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#configuring-druids-property-file">7.Configuring Druid’s property file</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#step6-create-necessary-directory-by-shell">Step6.Create necessary directory by shell - 필요 디렉토리 생성</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#step7-configuring-druids-property-file-druid-config">Step7.Configuring Druid’s property file - Druid Config 주요 설정 변경</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="install.html#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-common-common-runtime-properties">./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/_common/common.runtime.properties</a></li>
 <li class="toctree-l3"><a class="reference internal" href="install.html#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-coordinator-runtime-properties">./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/coordinator/runtime.properties</a></li>
 <li class="toctree-l3"><a class="reference internal" href="install.html#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-overlord-runtime-properties">./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/overlord/runtime.properties</a></li>
@@ -191,12 +196,20 @@
 <li class="toctree-l3"><a class="reference internal" href="install.html#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-middlemanager-runtime-properties">./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/middleManager/runtime.properties</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#modify-deploy-envirnonment-script">8.Modify deploy envirnonment script</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#step8-modify-deploy-envirnonment-script-script-druid-bootstrap-scripts-druid-env-sh">Step8.Modify deploy envirnonment script - Script 환경 설정 변경 (druid_bootstrap/scripts/druid_env.sh)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="install.html#druid-dist-druid-dist-v2-druid-bootstrap-scripts-druid-env-sh">./druid_dist/druid_dist_v2/druid_bootstrap/scripts/druid-env.sh</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#deploy-to-each-cluster-server">9.Deploy to each cluster server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#start-up-druid-services">10.Start up Druid services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#step9-deploy-to-each-cluster-server">Step9. Deploy to each cluster server - 배포</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#step10-start-up-druid-services">Step10. Start up Druid services - 가동 절차</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#step11">Step11. 설치 점검</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#step12">Step12. 접속 확인</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="singleinstall.html">분산 환경 Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="singleinstall.html#step1-build">Step1. Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singleinstall.html#step2-deploy">Step2. Deploy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singleinstall.html#step3">Step3. 접속확인</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="console.html">Console</a><ul>
@@ -223,7 +236,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="install.html" class="btn btn-neutral float-right" title="Install" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="version.html" class="btn btn-neutral float-right" title="Version" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../part02/install.html" class="btn btn-neutral" title="Install" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

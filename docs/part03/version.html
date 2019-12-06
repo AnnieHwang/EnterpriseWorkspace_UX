@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Version &mdash; Metatron Discovery Install Docs 0.4.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../static/css/layout.css" type="text/css" />
+  <link rel="stylesheet" href="../static/css/layout.css" type="text/css" />
+    <link rel="index" title="색인" href="../genindex.html" />
+    <link rel="search" title="검색" href="../search.html" />
+    <link rel="next" title="분산 환경 Install" href="install.html" />
+    <link rel="prev" title="Metatron Engine (Druid)" href="index.html" /> 
+
+  
+  <script src="../static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../static/logo2.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2019-12-05
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../part00/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part01/index.html">기본 환경(어플리케이션)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part02/index.html">Hadoop</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Metatron Engine (Druid)</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Version</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">버젼</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">버젼호환 테스트</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="install.html">분산 환경 Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singleinstall.html">분산 환경 Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="console.html">Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ingestion.html">Ingestion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../part04/index.html">Metatron Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part05/index.html">Metatron Anomaly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part06/index.html">Metatron Integrator</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Metatron Discovery Install Docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Metatron Engine (Druid)</a> &raquo;</li>
+        
+      <li>Version</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/part03/version.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="version">
+<h1>Version<a class="headerlink" href="#version" title="제목 주소">¶</a></h1>
+<p>Metatron의 시계열 엔진입니다. 모든 Metatron 제품은 해당 엔진을 사용하고 있습니다.</p>
+<blockquote>
+<div><ul class="simple">
+<li>우리는 Apache Druid와 다름. (동일하게 설치하면 절대 안됨)</li>
+<li>소스는 discovery 올라갈때 그 안에 들어있음</li>
+<li>현재 버젼은 Metatron Discovery 버젼을 사용하고 있음</li>
+<li>druid 안에 hadoop 라이브러리가 들어가 있음</li>
+<li>현재 Hadoop 2.7.3로 컴파일 됨. (만약 3버젼대를 사용하려면 해당 Hadoop 라이브러리로 컴파일 해야함)</li>
+<li>싱글과 분산환경 버젼은 동일함 (같은 라이브러리를 사용해도 됨)</li>
+</ul>
+</div></blockquote>
+<div class="section" id="id1">
+<h2>버젼<a class="headerlink" href="#id1" title="제목 주소">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>우리의 대표 2.7.3로 기준으로 default로 제공함 (암바리 기준으로 2.6.x임)</li>
+<li>3점대도 지원함. 이 경우 따로 building을 해야함 (현재 3.1.4 HDP 테스트 했음)</li>
+<li>버젼을 사이트 별로 따로 관리되어야 함 (물어보면 알려줄 것임)</li>
+<li>현재 hadoop 2.7대로 druid가 building 되어 있음. hadoop 3.x 대 버젼으로 사용하려면 druid를 building해야 함.</li>
+<li>hadoop minor버젼에 영향을 많이 받기 때문에..위의 버젼이 아닌 경우, 테스트 해보기 바란다.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="id2">
+<h3>버젼호환 테스트<a class="headerlink" href="#id2" title="제목 주소">¶</a></h3>
+<p>버젼을 변경하여 컴파일 하면 다음과 같은 테스트가 필요함 (정상작동되나 확인하기 위해서임)
+테스트순서는 아래와 같습니다.</p>
+<blockquote>
+<div><ul class="simple">
+<li>파일 샘플 데이터: 세일즈데이터를 사용했음</li>
+<li>하이브 테스트 데이터 :XXX을 사용했음</li>
+<li>테스트 순서 : Druid 코디네이터, 오버로드 테스트 =&gt; 파일 적재 테스트 =&gt; 하이브 적재테스트</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="분산 환경 Install" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Metatron Engine (Druid)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, SKT
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'0.4.2',
+              LANGUAGE:'ko',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../static/jquery.js"></script>
+        <script type="text/javascript" src="../static/underscore.js"></script>
+        <script type="text/javascript" src="../static/doctools.js"></script>
+        <script type="text/javascript" src="../static/translations.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

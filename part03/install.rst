@@ -1,36 +1,6 @@
-Install
+분산 환경 Install
 ---------------------------------------------
-Metatron의 시계열 엔진입니다. 모든 Metatron 제품은 해당 엔진을 사용하고 있습니다.
-
-    * 우리는 Apache Druid와 다름. (동일하게 설치하면 절대 안됨)
-    * 소스는 discovery 올라갈때 그 안에 들어있음
-    * 현재 버젼은 Metatron Discovery 버젼을 사용하고 있음
-    * druid 안에 hadoop 라이브러리가 들어가 있음
-    * 현재 Hadoop 2.7.3로 컴파일 됨. (만약 3버젼대를 사용하려면 해당 Hadoop 라이브러리로 컴파일 해야함)
-    * 싱글과 분산환경 버젼은 동일함 (같은 라이브러리를 사용해도 됨)
-
-
-
-버젼
-=====================================================
-    * 우리의 대표 2.7.3로 기준으로 default로 제공함 (암바리 기준으로 2.6.x임)
-    * 3점대도 지원함. 이 경우 따로 building을 해야함 (현재 3.1.4 HDP 테스트 했음)
-    * 버젼을 사이트 별로 따로 관리되어야 함 (물어보면 알려줄 것임)
-    * 현재 hadoop 2.7대로 druid가 building 되어 있음. hadoop 3.x 대 버젼으로 사용하려면 druid를 building해야 함.
-    * hadoop minor버젼에 영향을 많이 받기 때문에..위의 버젼이 아닌 경우, 테스트 해보기 바란다.
-
-버젼호환 테스트
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-버젼을 변경하여 컴파일 하면 다음과 같은 테스트가 필요함 (정상작동되나 확인하기 위해서임)
-테스트순서는 아래와 같습니다.
-
-    * 파일 샘플 데이터: 세일즈데이터를 사용했음
-    * 하이브 테스트 데이터 :XXX을 사용했음
-    * 테스트 순서 : Druid 코디네이터, 오버로드 테스트 => 파일 적재 테스트 => 하이브 적재테스트
-
-
-
-1.Configure directories in hdfs as below
+Step1. Configure directories in hdfs as below
 =====================================================
 
     .. code-block:: console
@@ -39,7 +9,7 @@ Metatron의 시계열 엔진입니다. 모든 Metatron 제품은 해당 엔진�
         hadoop fs -mkdir -p /druid/storage
         hadoop fs -mkdir -p /druid/logs
 
-2.Download customized Druid & Unzip
+Step2. Metatron Engine(Druid) 다운로드
 =====================================================
 Download and Unzip the binary file. This Link – for Hadoop 2.7.3
 
@@ -49,7 +19,7 @@ Download and Unzip the binary file. This Link – for Hadoop 2.7.3
         Example location>
         ./druid_dist/druid-0.9.1-SNAPSHOT.{discovery.version}-hadoop-2.7.3
 
-3.Download deploy template shell & Unzip
+Step3. Download deploy template shell & Unzip
 =====================================================
 Download and Unzip the binary file.  This Link
 
@@ -59,12 +29,18 @@ Download and Unzip the binary file.  This Link
         Example Location>
         ./druid_dist/druid_dist_v2
 
-4.Ansible  Host Setting
+Step4. Ansible Host 설정
 =====================================================
-Ansible keeps track of all of the servers that it known about through a “hosts”. We need to set up this file first before we can begin to communicate with our other computers. Refer to the host file under the ./druid_dist/druid_dist_v2 directory and set it in /etc/ansible/hosts.
+    * druid_dist 내 hosts 내 druid 관련 설정을 참고하여 설치할 서버의 정보를 기입합니다.  (Ansible 서버에서 Druid cluster 에 자동 접속되는 환경을 구축해야한다. 또는 샘플에 위치한 vars 옵션을 사용하여 ssh 접속정보를 기입합니다.)
+    * root 또는 sudo 권한이 있다면, /etc/ansible/hosts 내 설정하거나, INVENTORY 환경 변수를 지정하는 방법으로 설정합니다. (참고 : https://www.lesstif.com/pages/viewpage.action?pageId=22052879)
 
-5.Modify deploy environment shell
-=====================================================
+Step5. Modify deploy environment shell : Druid배포를 위한 설정 정보 변경 (env.sh)
+=============================================================================================
+    * 사전 계정 작업 : 배포를 위한 user hadoop group hadoop 계정 설정 설치 서버에서 각 서버간 ssh접속은 password없이 이루어져야 한다
+    * /home/hadoop/servers/druid_dist : 설치 서버의 배포 디렉토리
+    * /home/hadoop/servers/druid : 실제 클러스터에 copy되는 디렉토리
+    * /dataXXX/druid/segment-cache : datanode위에 historical node가 올라가며 segment cache영역을 disk array 개수만큼 선언함
+
 
 ./druid_dist/druid_dist_v2/env.sh
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -84,13 +60,18 @@ Ansible keeps track of all of the servers that it known about through a “hosts
         SEGMENET_CACHE_DIR=("/home/metatron/data1/druid/segment-cache" "/home/metatron/data2/druid/segment-cache" "/home/metatron/data3/druid/segment-cache" "/home/metatron/data4/druid/segment-cache" "/home/metatron/data5/druid/segment-cache" "/home/metatron/data6/druid/segment-cache" "/home/metatron/data7/druid/segment-cache" "/home/metatron/data8/druid/segment-cache" "/home/metatron/data9/druid/segment-cache" "/home/metatron/data10/druid/segment-cache") #Local cache disk directory
 
 
-6.Create necessary directory by shell
-=====================================================
+Step6.Create necessary directory by shell - 필요 디렉토리 생성
+=============================================================================================
 ./druid_dist/druid_dist_v2/setup_druid.sh
 
-7.Configuring Druid’s property file
-=====================================================
+Step7.Configuring Druid’s property file - Druid Config 주요 설정 변경
+=============================================================================================
 The major configuration has already been put in the "bootstrap" directory. Below is a list of things you need to change or update depending on your environment
+
+    * druid cluster 구성을 위한 meta system정보를 기입한다.
+    * hdfs내에 디렉토리를 다음과 같이 구성한다
+    * hadoop fs -mkdir -p /druid/storage
+    * hadoop fs -mkdir -p /druid/logs
 
 ./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/_common/common.runtime.properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -122,6 +103,10 @@ The major configuration has already been put in the "bootstrap" directory. Below
         druid.selectors.coordinator.serviceName=druid/prod/coordinator
 
 
+    * druid.extensions.loadList의 경우 extention중 필요로 하는 extension을 선택적으로 로딩하는 방식이다. 필수로 "mysql-metadata-storage", "druid-hdfs-storage"는 포함되어야 한다.
+    * druid.query.groupBy.maxResults → groupBy Query의 최대 결과값을 지정한다. cardinality가 크면 메모리에 부담이 많이 가므로 주의해야 한다.
+    * serviceName 의 경우 zookeeper의 service name이다. common에서는 overlord, coordinator 정보만 기재한다. 각 컴포넌트의 serviceName과 매핑되어야 한다.
+
 
 ./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/coordinator/runtime.properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -134,7 +119,7 @@ The major configuration has already been put in the "bootstrap" directory. Below
 
 ./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/overlord/runtime.properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    .. code-block:: python
+    .. code-block:: jproperties
        :linenos:
 
         # Default host, port, service name.
@@ -143,7 +128,7 @@ The major configuration has already been put in the "bootstrap" directory. Below
 
 ./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/broker/runtime.properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    .. code-block:: python
+    .. code-block:: jproperties
        :linenos:
 
         druid.service=druid/prod/broker
@@ -172,7 +157,7 @@ The major configuration has already been put in the "bootstrap" directory. Below
 
 ./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/historical/runtime.properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    .. code-block:: python
+    .. code-block:: jproperties
        :linenos:
 
         druid.service=druid/prod/historical
@@ -198,7 +183,7 @@ The major configuration has already been put in the "bootstrap" directory. Below
 
 ./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/middleManager/runtime.properties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    .. code-block:: python
+    .. code-block:: jproperties
        :linenos:
 
         # default port, service name.
@@ -232,12 +217,12 @@ The major configuration has already been put in the "bootstrap" directory. Below
         druid.worker.version=0
 
 
-8.Modify deploy envirnonment script
-=====================================================
+Step8.Modify deploy envirnonment script - Script 환경 설정 변경 (druid_bootstrap/scripts/druid_env.sh)
+==========================================================================================================
 
 ./druid_dist/druid_dist_v2/druid_bootstrap/scripts/druid-env.sh
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    .. code-block:: python
+    .. code-block:: jproperties
        :linenos:
 
         #!/bin/sh
@@ -245,27 +230,62 @@ The major configuration has already been put in the "bootstrap" directory. Below
         DRUID_LOG_DIR=/home/metatron/data1/druid/var
 
 
-9.Deploy to each cluster server
+Step9. Deploy to each cluster server - 배포
 =====================================================
-    .. code-block:: python
+설정이나 스크립트가 변경될때마다 먼저 druid_bootstrap 내 수정사항을 지정한후, 위의 두가지 방법을 반복하여 배포
+
+    .. code-block:: console
        :linenos:
 
-        #Move modified conf and script file to binary directory
+        #Move modified conf and script file to binary directory - Binary 내 변경한 설정 파일 및 Script 수정사항 전달
         ./druid_dist/druid_dist_v2/init.sh {binary directory name}
 
-        #Deploy to each cluster server
+        #Deploy to each cluster server - 실제 서버에 배포
         ./druid_dist/druid_dist_v2/dist.sh {binary directory name}
 
-10.Start up Druid services
+Step10. Start up Druid services - 가동 절차
 =====================================================
-    .. code-block:: python
+    .. code-block:: console
        :linenos:
 
-        #Start up
+        #Start up - Druid Cluster 가동
         ./druid_dist/druid_dist_v2/run_druid.sh
 
-        #Status monitoring
+        #Status monitoring - Druid Cluster 상태 체크
         ./druid_dist/druid_dist_v2/status_druid.sh
 
-        #Stop druid
+        #Stop druid - Druid Cluster 중지
         ./druid_dist/druid_dist_v2/kill_druid.sh
+
+
+Step11. 설치 점검
+=====================================================
+적재 테스트를 위하여 Sample 데이터(sales_samples.tar.gz)를 받아 아래와 같이 수행합니다.
+
+sales_tab_delimeter.csv 를 middlemanager가 가동된 서버내 /tmp 디렉토리로 위치시킵니다.
+
+    .. code-block:: console
+       :linenos:
+
+        $ scp sales_tab_delimeter.csv username@hostname:/tmp
+
+적재 명령을 수행합니다. 적재후, 브라우져 상에서 http://{hostname}:8090 을 접속하여 적재 상태를 확인할수 있습니다.
+
+    .. code-block:: console
+       :linenos:
+
+        $ curl -X POST -H 'content-type: application/json' -d @sales_ingestion.json http://{hostname}:8090/druid/indexer/v1/task
+
+적재 결과를 확인합니다. 내부 셀 명령어를 보고 hostname 등을 수정하여 수행합니다.
+
+    .. code-block:: console
+       :linenos:
+
+       $ ./count_sales_data.sh
+
+
+Step12. 접속 확인
+=====================================================
+    * druid overlord - http://OVERLORD-HOST:8090/console.html
+    * druid coordinator - http://COORDINATOR-HOST:8081 -> 확인사항 coordinator에 sales 데이터 소스를 확인합니다.
+    * druid broker - http://BROKER-HOST:8082

@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>분산 환경 Install &mdash; Metatron Discovery Install Docs 0.4.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/layout.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/layout.css" type="text/css" />
+    <link rel="index" title="색인" href="../genindex.html" />
+    <link rel="search" title="검색" href="../search.html" />
+    <link rel="next" title="Console" href="console.html" />
+    <link rel="prev" title="분산 환경 Install" href="install.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo2.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2019-12-05
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../part00/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part01/index.html">기본 환경(어플리케이션)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part02/index.html">Hadoop</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Metatron Engine (Druid)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="version.html">Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html">분산 환경 Install</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">분산 환경 Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step1-build">Step1. Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step2-deploy">Step2. Deploy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step3">Step3. 접속확인</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="console.html">Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ingestion.html">Ingestion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../part04/index.html">Metatron Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part05/index.html">Metatron Anomaly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part06/index.html">Metatron Integrator</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Metatron Discovery Install Docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Metatron Engine (Druid)</a> &raquo;</li>
+        
+      <li>분산 환경 Install</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/part03/singleinstall.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="install">
+<h1>분산 환경 Install<a class="headerlink" href="#install" title="제목 주소">¶</a></h1>
+<div class="section" id="step1-build">
+<h2>Step1. Build<a class="headerlink" href="#step1-build" title="제목 주소">¶</a></h2>
+<p>Druid 서버를 로컬에 설치시, 아래 다운로드링크를 통해 바이너리를 설치하면, Build 단계는 건너뛰어도 됩니다.
+빌드보다는 최신 다운로드 본을 Metatron팀에 의뢰하여, 다운로드 받으시는것을 권고 드립니다.</p>
+<blockquote>
+<div><ul class="simple">
+<li><ol class="first arabic">
+<li>Source Code 다운로드</li>
+</ol>
+</li>
+</ul>
+<div class="highlight-console"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp"> $</span> git clone https://<span class="o">{</span>username<span class="o">}</span>@tde.sktelecom.com/stash/scm/metatron/druid.git
+</pre></div>
+</td></tr></table></div>
+<ul class="simple">
+<li><ol class="first arabic" start="2">
+<li>첨부한 Build Script 를 통해 빌드 수행</li>
+</ol>
+</li>
+</ul>
+<div class="highlight-console"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp"> $</span> git checkout latest
+<span class="gp"> $</span> build_druld.sh --tag<span class="o">={</span>지정하고자하는식별명<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+<ul class="simple">
+<li>3.빌드 성공 후, druid-0.9.1-SNAPSHOT.local.{Current Datetime}-bin.tar.gz 파일이 생성</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="step2-deploy">
+<h2>Step2. Deploy<a class="headerlink" href="#step2-deploy" title="제목 주소">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><ol class="first arabic">
+<li>Druid 용 디렉토리를 생성합니다.</li>
+</ol>
+</li>
+<li><ol class="first arabic" start="2">
+<li>Build 시 생성되었던 바이너리 파일을 druid 용 디렉토리에 압축을 해제합니다. (</li>
+</ol>
+</li>
+</ul>
+<div class="highlight-console"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">$</span> tar zxf druid-0.9.1-SNAPSHOT.local.<span class="o">{</span>Current Datetime<span class="o">}</span>-bin.tar.gz
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<ul>
+<li><p class="first">압축을 해제하면, druid 바이너리가 포함된 디렉토리가 생성됩니다.</p>
+<blockquote>
+<div><ul class="simple">
+<li><ol class="first arabic" start="3">
+<li>첨부한 initial 용 파일도 압축해제합니다. (기본 스크립트 및 sales 데이터 소스 포함)</li>
+</ol>
+</li>
+</ul>
+<div class="highlight-console"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">$</span> tar zxf druid-init.tar.gz
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</li>
+<li><p class="first">압축을 해제하면 druid_bootstrap_local 디렉토리와, init.sh 스크립트가 생성됩니다.</p>
+<blockquote>
+<div><ul class="simple">
+<li><ol class="first arabic" start="4">
+<li>Init 스크립트를 수행합니다.</li>
+</ol>
+</li>
+</ul>
+<div class="highlight-console"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">$</span> ./init.sh <span class="o">[</span>druid 바이너리 디렉토리<span class="o">]</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</li>
+<li><p class="first">스크립트를 실행하면, druid 라는 druid 바이너리 디렉토리 와 링크된 디렉토리가 생성되며, 내부에 실행/중지 스크립트 및 데이터 파일이 포함이 됩니다.</p>
+<blockquote>
+<div><ul class="simple">
+<li><ol class="first arabic" start="5">
+<li>서버를 실행합니다.</li>
+</ol>
+</li>
+</ul>
+<div class="highlight-console"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> druid
+<span class="gp">$</span> ./start-single.sh <span class="p">|</span> ./stop-single.sh
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</li>
+<li><p class="first">로그를 확인하시려면, log/single.log 파일을 확인해주세요. (2017-08-08T07:00:45,071 INFO [main] org.eclipse.jetty.server.Server - Started &#64;11120ms 가 나타나면 성공)</p>
+</li>
+</ul>
+<p>※ 추후 바이너리가 배포 되면 압축해제 후, 3번 수행사항을 제외하고 반복하시면됩니다.</p>
+</div>
+<div class="section" id="step3">
+<h2>Step3. 접속확인<a class="headerlink" href="#step3" title="제목 주소">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>druid overlord - <a class="reference external" href="http://localhost:8090/console.html">http://localhost:8090/console.html</a></li>
+<li>druid coordinator - <a class="reference external" href="http://localhost:8081">http://localhost:8081</a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="console.html" class="btn btn-neutral float-right" title="Console" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral" title="분산 환경 Install" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, SKT
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'0.4.2',
+              LANGUAGE:'ko',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
