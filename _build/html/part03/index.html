@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Metatron Engine (Druid) &mdash; Metatron Discovery Install Docs 0.4.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/layout.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/layout.css" type="text/css" />
+    <link rel="index" title="색인" href="../genindex.html" />
+    <link rel="search" title="검색" href="../search.html" />
+    <link rel="next" title="Install" href="install.html" />
+    <link rel="prev" title="Install" href="../part02/install.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2019-12-05
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../part00/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part01/index.html">기본 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part02/index.html">Hadoop</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Metatron Engine (Druid)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="console.html">Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ingestion.html">Ingestion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../part04/index.html">Metatron Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part05/index.html">Metatron Anomaly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part06/index.html">Metatron Integrator</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Metatron Discovery Install Docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Metatron Engine (Druid)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/part03/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="metatron-engine-druid">
+<h1>Metatron Engine (Druid)<a class="headerlink" href="#metatron-engine-druid" title="제목 주소">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#id1">버젼</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html#id2">버젼호환 테스트</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#configure-directories-in-hdfs-as-below">1.Configure directories in hdfs as below</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#download-customized-druid-unzip">2.Download customized Druid &amp; Unzip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#download-deploy-template-shell-unzip">3.Download deploy template shell &amp; Unzip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#ansible-host-setting">4.Ansible  Host Setting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#modify-deploy-environment-shell">5.Modify deploy environment shell</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html#druid-dist-druid-dist-v2-env-sh">./druid_dist/druid_dist_v2/env.sh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#create-necessary-directory-by-shell">6.Create necessary directory by shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#configuring-druids-property-file">7.Configuring Druid’s property file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-common-common-runtime-properties">./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/_common/common.runtime.properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-coordinator-runtime-properties">./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/coordinator/runtime.properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-overlord-runtime-properties">./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/overlord/runtime.properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-broker-runtime-properties">./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/broker/runtime.properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-historical-runtime-properties">./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/historical/runtime.properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-middlemanager-runtime-properties">./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/middleManager/runtime.properties</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#modify-deploy-envirnonment-script">8.Modify deploy envirnonment script</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html#druid-dist-druid-dist-v2-druid-bootstrap-scripts-druid-env-sh">./druid_dist/druid_dist_v2/druid_bootstrap/scripts/druid-env.sh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#deploy-to-each-cluster-server">9.Deploy to each cluster server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#start-up-druid-services">10.Start up Druid services</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="console.html">Console</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="console.html#console-uri">Console URI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="console.html#connecting-metatron-discovery">Connecting metatron Discovery</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ingestion.html">Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ingestion.html#step01">Step01. 적재하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ingestion.html#step02">Step02. 적재상태 확인</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ingestion.html#step03-engine-console">Step03. Engine Console 확인</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ingestion.html#step04-hadoop-console">Step04. Hadoop Console에서 확인</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="Install" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../part02/install.html" class="btn btn-neutral" title="Install" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, SKT
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'0.4.2',
+              LANGUAGE:'ko',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

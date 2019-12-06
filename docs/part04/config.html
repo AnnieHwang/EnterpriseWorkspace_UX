@@ -1,0 +1,543 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Config &mdash; Metatron Discovery Install Docs 0.4.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/layout.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/layout.css" type="text/css" />
+    <link rel="index" title="색인" href="../genindex.html" />
+    <link rel="search" title="검색" href="../search.html" />
+    <link rel="next" title="Metatron Anomaly" href="../part05/index.html" />
+    <link rel="prev" title="Install" href="install.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2019-12-05
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../part00/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part01/index.html">기본 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part02/index.html">Hadoop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part03/index.html">Metatron Engine (Druid)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Metatron Discovery</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Config</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#common-properties">common-properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#source-yaml">source, yaml</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#app-properties">app-properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">source, yaml</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../part05/index.html">Metatron Anomaly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part06/index.html">Metatron Integrator</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Metatron Discovery Install Docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Metatron Discovery</a> &raquo;</li>
+        
+      <li>Config</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/part04/config.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="config">
+<h1>Config<a class="headerlink" href="#config" title="제목 주소">¶</a></h1>
+<p><a class="reference external" href="https://github.com/metatron-app/metatron-discovery/blob/0dca7449f19826d13a3b2b823ac4b0dd46d5305f/discovery-server/src/main/asciidoc/application-config-guide.adoc">https://github.com/metatron-app/metatron-discovery/blob/0dca7449f19826d13a3b2b823ac4b0dd46d5305f/discovery-server/src/main/asciidoc/application-config-guide.adoc</a></p>
+<div class="section" id="overview">
+<h2>overview<a class="headerlink" href="#overview" title="제목 주소">¶</a></h2>
+<p>The metatron application configuration is configured in yaml format.
+The &#8220;application-config.templete.yaml&#8221; file provided by the distribution binary is provided as an example, and you can specify detailed settings based on the information below.</p>
+<div class="section" id="common-properties">
+<h3>common-properties<a class="headerlink" href="#common-properties" title="제목 주소">¶</a></h3>
+<p>Common properties in metatron depends on the spring boot configuration. Therefore, if you need additional settings, please refer to the <a class="reference external" href="https://docs.spring.io/spring-boot/docs/1.5.9.RELEASE/reference/html/common-application-properties.html[link">https://docs.spring.io/spring-boot/docs/1.5.9.RELEASE/reference/html/common-application-properties.html[link</a>].</p>
+</div>
+<div class="section" id="source-yaml">
+<h3>source, yaml<a class="headerlink" href="#source-yaml" title="제목 주소">¶</a></h3>
+<blockquote>
+<div><div class="highlight-jproperties"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="na"> spring</span><span class="o">:</span>
+<span class="na">   http</span><span class="o">:</span>
+<span class="na">     multipart</span><span class="o">:</span> <span class="s"># Used to adjust the maximum size when uploading files</span>
+<span class="na">       max-file-size</span><span class="o">:</span> <span class="s">300Mb</span>
+<span class="na">       max-request-size</span><span class="o">:</span> <span class="s">300Mb</span>
+   <span class="c"># The default value is set according to the setting of the METATRON_DB_TYPE value(h2 or mysql) in metatron-env.sh.</span>
+   <span class="c"># If you want additional configuration, it is recommended to manage only connection pool or jpa related properties.</span>
+   <span class="c"># If you want to set up a new data source type, you can change it from the &#39;platform&#39; property.</span>
+<span class="na">   datasource</span><span class="o">:</span>
+<span class="na">     platform</span><span class="o">:</span> <span class="s">mysql</span>
+<span class="na">     driver-class-name</span><span class="o">:</span> <span class="s">com.mysql.jdbc.Driver</span>
+<span class="na">     url</span><span class="o">:</span> <span class="s">jdbc:mysql://localhost:3306/polaris_v2?useUnicode=true&amp;amp;characterEncoding=utf8</span>
+<span class="na">     username</span><span class="o">:</span> <span class="s">polaris</span>
+<span class="na">     password</span><span class="o">:</span> <span class="s">polaris</span>
+     <span class="c"># Below is the connection pool related configuration.</span>
+<span class="na">     max-active</span><span class="o">:</span> <span class="s">50</span>
+<span class="na">     max-idle</span><span class="o">:</span> <span class="s">10</span>
+<span class="na">     min-idle</span><span class="o">:</span> <span class="s">10</span>
+<span class="na">     initial-size</span><span class="o">:</span> <span class="s">10</span>
+<span class="na">     test-on-borrow</span><span class="o">:</span> <span class="s">false</span>
+<span class="na">     test-on-return</span><span class="o">:</span> <span class="s">false</span>
+<span class="na">     test-while-idle</span><span class="o">:</span> <span class="s">true</span>
+<span class="na">     max-wait</span><span class="o">:</span> <span class="s">1000</span>
+<span class="na">     validation-query</span><span class="o">:</span> <span class="s">SELECT 1</span>
+<span class="na">   jpa</span><span class="o">:</span>
+<span class="na">     show-sql</span><span class="o">:</span> <span class="s">false</span>
+<span class="na">     properties</span><span class="o">:</span>
+<span class="na">       hibernate</span><span class="o">:</span>
+<span class="na">         jdbc</span><span class="o">:</span>
+<span class="na">           batch_size</span><span class="o">:</span> <span class="s">25</span>
+<span class="na">         order_inserts</span><span class="o">:</span> <span class="s">true</span>
+<span class="na">         order_updates</span><span class="o">:</span> <span class="s">true</span>
+<span class="na">         dialect</span><span class="o">:</span> <span class="s">org.hibernate.dialect.MySQL5InnoDBDialect</span>
+<span class="na"> server</span><span class="o">:</span>
+<span class="na">   port</span><span class="o">:</span> <span class="s">8180 # If you want to change the port</span>
+<span class="na">   tomcat</span><span class="o">:</span>
+<span class="na">     ajp</span><span class="o">:</span> <span class="s"># You can allow ajp connection with the following settings.</span>
+<span class="na">       enabled</span><span class="o">:</span> <span class="s">false</span>
+<span class="na">       protocol</span><span class="o">:</span> <span class="s">AJP/1.3</span>
+<span class="na">       port</span><span class="o">:</span> <span class="s">8280</span>
+<span class="na"> logging</span><span class="o">:</span>
+   <span class="c"># If you want to set up a separate log, create a separate file to specify the path to the file.</span>
+   <span class="c"># Please refer to https://logback.qos.ch/manual/configuration.html</span>
+<span class="na">   config</span><span class="o">:</span> <span class="s">classpath:logback-console.xml</span>
+<span class="na">   mail</span><span class="o">:</span> <span class="s"># Mail(SMTP) server properties</span>
+<span class="na">     host</span><span class="o">:</span> <span class="s">localhost</span>
+<span class="na">     port</span><span class="o">:</span> <span class="s">25</span>
+<span class="na">     username</span><span class="o">:</span>
+<span class="na">     password</span><span class="o">:</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="app-properties">
+<h2>app-properties<a class="headerlink" href="#app-properties" title="제목 주소">¶</a></h2>
+<p>The application-related properties are prefixed with &#8220;polaris&#8221; and categorized by domain.</p>
+<div class="section" id="id1">
+<h3>source, yaml<a class="headerlink" href="#id1" title="제목 주소">¶</a></h3>
+<blockquote>
+<div><div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83</pre></div></td><td class="code"><div class="highlight"><pre><span></span> polaris:
+   format:
+     <span class="c1"># Specify a datetime format that is recommended when performing validation on a column of type timestamp.</span>
+     datetimes:
+       - <span class="s1">&#39;yy-MM-dd&#39;</span>
+       - <span class="s1">&#39;dd/MM/yyyy&#39;</span>
+   storage:
+     <span class="c1"># The stagedb concept is internally used as an intermediary processing medium when processing large amounts of data</span>
+     <span class="c1"># when ingesting or transforming data in an application. We are using hive and specify the information related to it.</span>
+     stagedb:
+       hostname: localhost <span class="c1"># for hiveserver</span>
+       port: <span class="m">10000</span>         <span class="c1"># for hiveserver</span>
+       username: hive      <span class="c1"># for hiveserver</span>
+       password: hive      <span class="c1"># for hiveserver</span>
+       metastore: <span class="c1"># specify additional information when you want to get more information such as partitions.</span>
+         uri: thrift://localhost:9083
+         jdbc:
+           url: jdbc:mysql://metatron-web-01:3306/hive
+           username: hive
+           password: hive
+   engine:
+     <span class="c1"># Specify representative access url by engine node, application requires only 3 nodes</span>
+     hostname:
+       broker: http://localhost:8082
+       overlord: http://localhost:8090
+       coordinator: http://localhost:8081
+     ingestion:
+       <span class="c1"># Used when forwarding files from an application to an engine cluster when loading local files</span>
+       loader:
+         remoteType: SSH <span class="c1"># &quot;LOCAL&quot; is the default value, but if the engine is configured as a separate cluster, use &quot;SSH&quot; mode for remote communication.</span>
+         localBaseDir: <span class="si">${</span><span class="nv">java</span><span class="p">.io.tmpdir</span><span class="k">:-</span><span class="p">/tmp</span><span class="si">}</span>
+         remoteDir: <span class="si">${</span><span class="nv">java</span><span class="p">.io.tmpdir</span><span class="k">:-</span><span class="p">/tmp</span><span class="si">}</span>
+         <span class="c1"># Specifies the host information where the middle manager node is located.</span>
+         hosts:
+           middlemanager01: <span class="c1"># It must be the hostname recognized by the engine. Refer to the worker hostname on the engine console.</span>
+             port: <span class="m">22</span>
+             username: metatron
+             password: pem:<span class="si">${</span><span class="nv">METATRON_HOME</span><span class="si">}</span>/pem/user-metatron.pem <span class="c1"># Specify &quot;pem&quot; prefix and pem file location if you use pem file when connecting to remote host</span>
+           <span class="s2">&quot;[middlemanager.01]&quot;</span>: <span class="c1"># If the host name contains &quot;.&quot; If included, display like this</span>
+             port: <span class="m">22</span>
+             username: metatron
+             password: metatron_password
+     query:
+       loader: <span class="c1"># Unlike in &quot;ingestion&quot;, when downloading query results, it is used to transfer download file generated by engine to application</span>
+         remoteType: LOCAL
+         localBaseDir: <span class="si">${</span><span class="nv">java</span><span class="p">.io.tmpdir</span><span class="k">:-</span><span class="p">/tmp</span><span class="si">}</span>
+   datasource:
+     ingestion:
+       retries: <span class="c1"># Retry properties used when checking the status of engine when ingestion</span>
+         delay: <span class="m">3</span>
+         maxDelay: <span class="m">90</span>
+         maxDuration : <span class="m">3600</span>
+   mail:                            <span class="c1"># Additional information for mail notifications</span>
+     admin: admin@metatron.com      <span class="c1"># Specify representative manager email</span>
+     baseUrl: http://localhost:8180 <span class="c1"># Specify connection url for linking metatron contents in mail</span>
+   workbench:
+     defaultResultSize: <span class="m">1000</span>        <span class="c1"># Row number of results to display by default on the screen</span>
+     maxResultSize: <span class="m">1000000</span>         <span class="c1"># The maximum row number of results that a user can specify</span>
+     maxFetchSize: <span class="m">1000</span>             <span class="c1"># Fetch size when loading sql results, only applies to supported db library</span>
+     tempCSVPath: /tmp              <span class="c1"># Specify a directory to temporarily store query results</span>
+   dataprep:
+     localBaseDir: <span class="si">${</span><span class="nv">user</span><span class="p">.home</span><span class="si">}</span>/dataprep                       <span class="c1"># Where uploaded files, local file snapshots, serialized previews are stored</span>
+     hadoopConfDir: /etc/hadoop                                <span class="c1"># Set $HADOOP_CONF_DIR</span>
+     stagingBaseDir: hdfs://localhost:9000/user/hive/dataprep  <span class="c1"># Where uploaded files, HDFS file snapshots, files for Hive external tables are stored</span>
+     sampling:
+       timeout: <span class="m">20</span>       <span class="c1"># Timeout for rule edit sessions</span>
+     etl:
+       timeout: <span class="m">36000</span>    <span class="c1"># Timeout for generating snapshots</span>
+   extensions:
+       lnb:                          <span class="c1"># Specify the menu to add to the LNB.</span>
+         - name: one depth menu      <span class="c1"># Specify 1st depth menu name</span>
+           parent: ROOT              <span class="c1"># Specify &quot;ROOT&quot; to be on the top menu. In the case of &quot;ROOT&quot;, it is displayed in the LNB if a lower depth menu exists.</span>
+           permissions:
+             - PERM_NAME     <span class="c1"># Specify a list of PERM_NAME. If not specified, all users can access.</span>
+         - name: two depth menu      <span class="c1"># Specify 2nd depth menu name</span>
+           parent: one depth menu    <span class="c1"># Specify the parent menu name including &quot;management&quot; and &quot;administration&quot;. If the menu name of the upper depth does not exist, it is not displayed.</span>
+           subContents:
+             menu name: URL         <span class="c1"># Specify the menu name as key and the URL(http://~~) to link to as value.</span>
+           permissions:
+             - PERM_NAME     <span class="c1"># Specify a list of PERM_NAME. If not specified, all users with permissions in the upper depth menu can access.</span>
+         - name: Engine Monitoring   <span class="c1"># for Engine(Druid) Monitoring</span>
+           permissions:
+             - PERM_NAME     <span class="c1"># Specify a list of PERM_NAME. If not specified, all users with permissions in the upper depth menu can access.</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../part05/index.html" class="btn btn-neutral float-right" title="Metatron Anomaly" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral" title="Install" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, SKT
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'0.4.2',
+              LANGUAGE:'ko',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

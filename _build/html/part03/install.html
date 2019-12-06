@@ -1,0 +1,674 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Install &mdash; Metatron Discovery Install Docs 0.4.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/layout.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/layout.css" type="text/css" />
+    <link rel="index" title="색인" href="../genindex.html" />
+    <link rel="search" title="검색" href="../search.html" />
+    <link rel="next" title="Console" href="console.html" />
+    <link rel="prev" title="Metatron Engine (Druid)" href="index.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2019-12-05
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../part00/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part01/index.html">기본 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part02/index.html">Hadoop</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Metatron Engine (Druid)</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">버젼</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">버젼호환 테스트</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-directories-in-hdfs-as-below">1.Configure directories in hdfs as below</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#download-customized-druid-unzip">2.Download customized Druid &amp; Unzip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#download-deploy-template-shell-unzip">3.Download deploy template shell &amp; Unzip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ansible-host-setting">4.Ansible  Host Setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modify-deploy-environment-shell">5.Modify deploy environment shell</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#druid-dist-druid-dist-v2-env-sh">./druid_dist/druid_dist_v2/env.sh</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#create-necessary-directory-by-shell">6.Create necessary directory by shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-druids-property-file">7.Configuring Druid’s property file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-common-common-runtime-properties">./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/_common/common.runtime.properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-coordinator-runtime-properties">./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/coordinator/runtime.properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-overlord-runtime-properties">./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/overlord/runtime.properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-broker-runtime-properties">./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/broker/runtime.properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-historical-runtime-properties">./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/historical/runtime.properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-middlemanager-runtime-properties">./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/middleManager/runtime.properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#modify-deploy-envirnonment-script">8.Modify deploy envirnonment script</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#druid-dist-druid-dist-v2-druid-bootstrap-scripts-druid-env-sh">./druid_dist/druid_dist_v2/druid_bootstrap/scripts/druid-env.sh</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy-to-each-cluster-server">9.Deploy to each cluster server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#start-up-druid-services">10.Start up Druid services</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="console.html">Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ingestion.html">Ingestion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../part04/index.html">Metatron Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part05/index.html">Metatron Anomaly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part06/index.html">Metatron Integrator</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Metatron Discovery Install Docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Metatron Engine (Druid)</a> &raquo;</li>
+        
+      <li>Install</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/part03/install.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="install">
+<h1>Install<a class="headerlink" href="#install" title="제목 주소">¶</a></h1>
+<p>Metatron의 시계열 엔진입니다. 모든 Metatron 제품은 해당 엔진을 사용하고 있습니다.</p>
+<blockquote>
+<div><ul class="simple">
+<li>우리는 Apache Druid와 다름. (동일하게 설치하면 절대 안됨)</li>
+<li>소스는 discovery 올라갈때 그 안에 들어있음</li>
+<li>현재 버젼은 Metatron Discovery 버젼을 사용하고 있음</li>
+<li>druid 안에 hadoop 라이브러리가 들어가 있음</li>
+<li>현재 Hadoop 2.7.3로 컴파일 됨. (만약 3버젼대를 사용하려면 해당 Hadoop 라이브러리로 컴파일 해야함)</li>
+<li>싱글과 분산환경 버젼은 동일함 (같은 라이브러리를 사용해도 됨)</li>
+</ul>
+</div></blockquote>
+<div class="section" id="id1">
+<h2>버젼<a class="headerlink" href="#id1" title="제목 주소">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>우리의 대표 2.7.3로 기준으로 default로 제공함 (암바리 기준으로 2.6.x임)</li>
+<li>3점대도 지원함. 이 경우 따로 building을 해야함 (현재 3.1.4 HDP 테스트 했음)</li>
+<li>버젼을 사이트 별로 따로 관리되어야 함 (물어보면 알려줄 것임)</li>
+<li>현재 hadoop 2.7대로 druid가 building 되어 있음. hadoop 3.x 대 버젼으로 사용하려면 druid를 building해야 함.</li>
+<li>hadoop minor버젼에 영향을 많이 받기 때문에..위의 버젼이 아닌 경우, 테스트 해보기 바란다.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="id2">
+<h3>버젼호환 테스트<a class="headerlink" href="#id2" title="제목 주소">¶</a></h3>
+<p>버젼을 변경하여 컴파일 하면 다음과 같은 테스트가 필요함 (정상작동되나 확인하기 위해서임)
+테스트순서는 아래와 같습니다.</p>
+<blockquote>
+<div><ul class="simple">
+<li>파일 샘플 데이터: 세일즈데이터를 사용했음</li>
+<li>하이브 테스트 데이터 :XXX을 사용했음</li>
+<li>테스트 순서 : Druid 코디네이터, 오버로드 테스트 =&gt; 파일 적재 테스트 =&gt; 하이브 적재테스트</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="configure-directories-in-hdfs-as-below">
+<h2>1.Configure directories in hdfs as below<a class="headerlink" href="#configure-directories-in-hdfs-as-below" title="제목 주소">¶</a></h2>
+<blockquote>
+<div><div class="highlight-console"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="go"> hadoop fs -mkdir -p /druid/storage</span>
+<span class="go"> hadoop fs -mkdir -p /druid/logs</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="download-customized-druid-unzip">
+<h2>2.Download customized Druid &amp; Unzip<a class="headerlink" href="#download-customized-druid-unzip" title="제목 주소">¶</a></h2>
+<p>Download and Unzip the binary file. This Link – for Hadoop 2.7.3</p>
+<blockquote>
+<div><div class="highlight-console"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="go"> Example location&gt;</span>
+<span class="go"> ./druid_dist/druid-0.9.1-SNAPSHOT.{discovery.version}-hadoop-2.7.3</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="download-deploy-template-shell-unzip">
+<h2>3.Download deploy template shell &amp; Unzip<a class="headerlink" href="#download-deploy-template-shell-unzip" title="제목 주소">¶</a></h2>
+<p>Download and Unzip the binary file.  This Link</p>
+<blockquote>
+<div><div class="highlight-console"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="go"> Example Location&gt;</span>
+<span class="go"> ./druid_dist/druid_dist_v2</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="ansible-host-setting">
+<h2>4.Ansible  Host Setting<a class="headerlink" href="#ansible-host-setting" title="제목 주소">¶</a></h2>
+<p>Ansible keeps track of all of the servers that it known about through a “hosts”. We need to set up this file first before we can begin to communicate with our other computers. Refer to the host file under the ./druid_dist/druid_dist_v2 directory and set it in /etc/ansible/hosts.</p>
+</div>
+<div class="section" id="modify-deploy-environment-shell">
+<h2>5.Modify deploy environment shell<a class="headerlink" href="#modify-deploy-environment-shell" title="제목 주소">¶</a></h2>
+<div class="section" id="druid-dist-druid-dist-v2-env-sh">
+<h3>./druid_dist/druid_dist_v2/env.sh<a class="headerlink" href="#druid-dist-druid-dist-v2-env-sh" title="제목 주소">¶</a></h3>
+<blockquote>
+<div><div class="highlight-jproperties"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c">#!/bin/sh</span>
+<span class="na"> TARGET_SYSTEM</span><span class="o">=</span><span class="s">&quot;metatron-hadoop01&quot;               #System Name</span>
+<span class="na"> BECOME_USER</span><span class="o">=</span><span class="s">&quot;metatron&quot;                          #User for Druid excution</span>
+<span class="na"> BECOME_GROUP</span><span class="o">=</span><span class="s">&quot;metatron&quot;                         #User Group for Druid excution</span>
+<span class="na"> BECOME_USER_GROUP</span><span class="o">=</span><span class="s">&quot;$BECOME_USER:$BECOME_GROUP&quot;</span>
+<span class="na"> TARGET_DIR</span><span class="o">=</span><span class="s">&quot;/home/metatron/servers/druid&quot;       #Target deploy directory</span>
+<span class="na"> DIST_DIR</span><span class="o">=</span><span class="s">&quot;/home/metatron/servers/druid_dist&quot;    #Distribution directory</span>
+<span class="na"> ROOT_TEMP_DIR</span><span class="o">=</span><span class="s">&quot;/home/metatron/data1/druid&quot;      #Temp directory</span>
+<span class="na"> TMP_DIR</span><span class="o">=</span><span class="s">&quot;$ROOT_TEMP_DIR/tmp&quot;</span>
+<span class="na"> VAR_DIR</span><span class="o">=</span><span class="s">&quot;$ROOT_TEMP_DIR/var&quot;</span>
+<span class="na"> SEGMENET_CACHE_DIR</span><span class="o">=</span><span class="s">(&quot;/home/metatron/data1/druid/segment-cache&quot; &quot;/home/metatron/data2/druid/segment-cache&quot; &quot;/home/metatron/data3/druid/segment-cache&quot; &quot;/home/metatron/data4/druid/segment-cache&quot; &quot;/home/metatron/data5/druid/segment-cache&quot; &quot;/home/metatron/data6/druid/segment-cache&quot; &quot;/home/metatron/data7/druid/segment-cache&quot; &quot;/home/metatron/data8/druid/segment-cache&quot; &quot;/home/metatron/data9/druid/segment-cache&quot; &quot;/home/metatron/data10/druid/segment-cache&quot;) #Local cache disk directory</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="create-necessary-directory-by-shell">
+<h2>6.Create necessary directory by shell<a class="headerlink" href="#create-necessary-directory-by-shell" title="제목 주소">¶</a></h2>
+<p>./druid_dist/druid_dist_v2/setup_druid.sh</p>
+</div>
+<div class="section" id="configuring-druids-property-file">
+<h2>7.Configuring Druid’s property file<a class="headerlink" href="#configuring-druids-property-file" title="제목 주소">¶</a></h2>
+<p>The major configuration has already been put in the &#8220;bootstrap&#8221; directory. Below is a list of things you need to change or update depending on your environment</p>
+<div class="section" id="druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-common-common-runtime-properties">
+<h3>./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/_common/common.runtime.properties<a class="headerlink" href="#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-common-common-runtime-properties" title="제목 주소">¶</a></h3>
+<blockquote>
+<div><div class="highlight-jproperties"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c"># Zookeeper – zookeeper cluster server list</span>
+<span class="na"> druid.zk.service.host</span><span class="o">=</span><span class="s">{zkhost01}:2181,{zkhost02}:2181,{zkhost03}:2181</span>
+<span class="na"> druid.zk.paths.base</span><span class="o">=</span><span class="s">/druid</span>
+ <span class="c"># Metadata Storage (MySQL or Maria DB connection info.)</span>
+<span class="na"> druid.metadata.storage.type</span><span class="o">=</span><span class="s">mysql</span>
+<span class="na"> druid.metadata.storage.connector.connectURI</span><span class="o">=</span><span class="s">jdbc:mysql://{mysql hostname}:{mysql port}/druid?useUnicode=true&amp;characterEncoding=UTF-8</span>
+<span class="na"> druid.metadata.storage.connector.user</span><span class="o">=</span><span class="s">druid</span>
+<span class="na"> druid.metadata.storage.connector.password</span><span class="o">=</span><span class="s">druid</span>
+ <span class="c"># Deep storage</span>
+ <span class="c"># For HDFS:</span>
+<span class="na"> druid.storage.type</span><span class="o">=</span><span class="s">hdfs</span>
+<span class="na"> druid.storage.storageDirectory</span><span class="o">=</span><span class="s">/druid/storage</span>
+ <span class="c"># Indexing service logs</span>
+ <span class="c"># For HDFS:</span>
+<span class="na"> druid.indexer.logs.type</span><span class="o">=</span><span class="s">hdfs</span>
+<span class="na"> druid.indexer.logs.directory</span><span class="o">=</span><span class="s">hdfs://{clustername}/druid/logs</span>
+ <span class="c"># Query Cache, 50MB</span>
+<span class="na"> druid.cache.type</span><span class="o">=</span><span class="s">local</span>
+<span class="na"> druid.cache.sizeInBytes</span><span class="o">=</span><span class="s">52428800</span>
+ <span class="c"># Service discovery</span>
+ <span class="c"># Indexing service discovery. Update this if you change your overlord&#39;s &quot;druid.service&quot;.</span>
+<span class="na"> druid.selectors.indexing.serviceName</span><span class="o">=</span><span class="s">druid/prod/overlord</span>
+<span class="na"> druid.selectors.coordinator.serviceName</span><span class="o">=</span><span class="s">druid/prod/coordinator</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-coordinator-runtime-properties">
+<h3>./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/coordinator/runtime.properties<a class="headerlink" href="#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-coordinator-runtime-properties" title="제목 주소">¶</a></h3>
+<blockquote>
+<div><div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Default host, port, service name.</span>
+ druid.service<span class="o">=</span>druid/prod/coordinator
+ druid.port<span class="o">=</span><span class="m">8081</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-overlord-runtime-properties">
+<h3>./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/overlord/runtime.properties<a class="headerlink" href="#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-overlord-runtime-properties" title="제목 주소">¶</a></h3>
+<blockquote>
+<div><div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Default host, port, service name.</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">service</span><span class="o">=</span><span class="n">druid</span><span class="o">/</span><span class="n">prod</span><span class="o">/</span><span class="n">overlord</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">port</span><span class="o">=</span><span class="mi">8090</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-broker-runtime-properties">
+<h3>./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/broker/runtime.properties<a class="headerlink" href="#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-broker-runtime-properties" title="제목 주소">¶</a></h3>
+<blockquote>
+<div><div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">druid</span><span class="o">.</span><span class="n">service</span><span class="o">=</span><span class="n">druid</span><span class="o">/</span><span class="n">prod</span><span class="o">/</span><span class="n">broker</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">port</span><span class="o">=</span><span class="mi">8082</span>
+
+ <span class="c1"># HTTP server threads</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">broker</span><span class="o">.</span><span class="n">http</span><span class="o">.</span><span class="n">numConnections</span><span class="o">=</span><span class="mi">20</span>
+ <span class="c1">#druid.server.http.numThreads=8</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">http</span><span class="o">.</span><span class="n">numThreads</span><span class="o">=</span><span class="mi">20</span>
+
+ <span class="c1"># Processing threads and buffers, 512MB</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">processing</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">sizeBytes</span><span class="o">=</span><span class="mi">536870912</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">processing</span><span class="o">.</span><span class="n">numThreads</span><span class="o">=</span><span class="mi">24</span>
+
+ <span class="n">druid</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">http</span><span class="o">.</span><span class="n">maxIdleTime</span><span class="o">=</span><span class="n">PT10m</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">broker</span><span class="o">.</span><span class="n">http</span><span class="o">.</span><span class="n">readTimeout</span><span class="o">=</span><span class="n">PT30M</span>
+
+ <span class="c1"># Query cache (we use a small local cache)</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">broker</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">useCache</span><span class="o">=</span><span class="n">true</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">broker</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">populateCache</span><span class="o">=</span><span class="n">true</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">broker</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">unCacheable</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;select&quot;</span><span class="p">,</span> <span class="s2">&quot;groupBy&quot;</span><span class="p">]</span>
+
+ <span class="c1"># Query Result Count</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">groupBy</span><span class="o">.</span><span class="n">maxResults</span><span class="o">=</span><span class="mi">100000000</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">groupBy</span><span class="o">.</span><span class="n">maxIntermediateRows</span><span class="o">=</span><span class="mi">100000000</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-historical-runtime-properties">
+<h3>./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/historical/runtime.properties<a class="headerlink" href="#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-historical-runtime-properties" title="제목 주소">¶</a></h3>
+<blockquote>
+<div><div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="n">druid</span><span class="o">.</span><span class="n">service</span><span class="o">=</span><span class="n">druid</span><span class="o">/</span><span class="n">prod</span><span class="o">/</span><span class="n">historical</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">port</span><span class="o">=</span><span class="mi">8083</span>
+
+ <span class="c1"># HTTP server threads</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">http</span><span class="o">.</span><span class="n">numThreads</span><span class="o">=</span><span class="mi">15</span>
+
+ <span class="c1"># Processing threads and buffers, 512MB</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">processing</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">sizeBytes</span><span class="o">=</span><span class="mi">536870912</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">processing</span><span class="o">.</span><span class="n">numThreads</span><span class="o">=</span><span class="mi">24</span>
+
+ <span class="c1"># ex. 50G per disk</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">segmentCache</span><span class="o">.</span><span class="n">locations</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/data1/druid/segment-cache&quot;</span><span class="p">,</span><span class="s2">&quot;maxSize&quot;</span><span class="p">:</span><span class="mi">53687091200</span><span class="p">},{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/data2/druid/segment-cache&quot;</span><span class="p">,</span><span class="s2">&quot;maxSize&quot;</span><span class="p">:</span><span class="mi">53687091200</span><span class="p">},{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/data3/druid/segment-cache&quot;</span><span class="p">,</span><span class="s2">&quot;maxSize&quot;</span><span class="p">:</span><span class="mi">53687091200</span><span class="p">},{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/data4/druid/segment-cache&quot;</span><span class="p">,</span><span class="s2">&quot;maxSize&quot;</span><span class="p">:</span><span class="mi">53687091200</span><span class="p">},{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/data5/druid/segment-cache&quot;</span><span class="p">,</span><span class="s2">&quot;maxSize&quot;</span><span class="p">:</span><span class="mi">53687091200</span><span class="p">},{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/data6/druid/segment-cache&quot;</span><span class="p">,</span><span class="s2">&quot;maxSize&quot;</span><span class="p">:</span><span class="mi">53687091200</span><span class="p">},{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/data7/druid/segment-cache&quot;</span><span class="p">,</span><span class="s2">&quot;maxSize&quot;</span><span class="p">:</span><span class="mi">53687091200</span><span class="p">},{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/data8/druid/segment-cache&quot;</span><span class="p">,</span><span class="s2">&quot;maxSize&quot;</span><span class="p">:</span><span class="mi">53687091200</span><span class="p">},{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/data9/druid/segment-cache&quot;</span><span class="p">,</span><span class="s2">&quot;maxSize&quot;</span><span class="p">:</span><span class="mi">53687091200</span><span class="p">},{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;/data10/druid/segment-cache&quot;</span><span class="p">,</span><span class="s2">&quot;maxSize&quot;</span><span class="p">:</span><span class="mi">53687091200</span><span class="p">}]</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">maxSize</span><span class="o">=</span><span class="mi">536870912000</span>
+
+ <span class="n">druid</span><span class="o">.</span><span class="n">historical</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">useCache</span><span class="o">=</span><span class="n">true</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">historical</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">populateCache</span><span class="o">=</span><span class="n">true</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">historical</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">unCacheable</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;select&quot;</span><span class="p">,</span> <span class="s2">&quot;groupby&quot;</span><span class="p">]</span>
+
+ <span class="n">druid</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">groupBy</span><span class="o">.</span><span class="n">maxResults</span><span class="o">=</span><span class="mi">100000000</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">groupBy</span><span class="o">.</span><span class="n">maxIntermediateRows</span><span class="o">=</span><span class="mi">100000000</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-middlemanager-runtime-properties">
+<h3>./druid_dist/druid_dist_v2/druid_bootstrap/conf/druid/middleManager/runtime.properties<a class="headerlink" href="#druid-dist-druid-dist-v2-druid-bootstrap-conf-druid-middlemanager-runtime-properties" title="제목 주소">¶</a></h3>
+<blockquote>
+<div><div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># default port, service name.</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">service</span><span class="o">=</span><span class="n">druid</span><span class="o">/</span><span class="n">prod</span><span class="o">/</span><span class="n">middlemanager</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">port</span><span class="o">=</span><span class="mi">8091</span>
+
+ <span class="c1"># HTTP server threads</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">http</span><span class="o">.</span><span class="n">numThreads</span><span class="o">=</span><span class="mi">12</span>
+
+ <span class="c1"># Processing threads and buffers</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">processing</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">sizeBytes</span><span class="o">=</span><span class="mi">256000000</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">processing</span><span class="o">.</span><span class="n">numThreads</span><span class="o">=</span><span class="mi">2</span>
+
+ <span class="c1"># Hadoop indexing</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">hadoopWorkingPath</span><span class="o">=/</span><span class="n">druid</span><span class="o">/</span><span class="n">indexing</span><span class="o">-</span><span class="n">tmp</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">defaultHadoopCoordinates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;org.apache.hadoop:hadoop-client:2.7.6&quot;</span><span class="p">]</span>
+
+ <span class="c1"># Task launch parameters</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">javaOpts</span><span class="o">=-</span><span class="n">server</span> <span class="o">-</span><span class="n">Xmx3g</span> <span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="o">+</span><span class="n">UseG1GC</span> <span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="n">MaxGCPauseMillis</span><span class="o">=</span><span class="mi">100</span> <span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="o">+</span><span class="n">PrintGCDetails</span> <span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="o">+</span><span class="n">PrintGCTimeStamps</span> <span class="o">-</span><span class="n">Duser</span><span class="o">.</span><span class="n">timezone</span><span class="o">=</span><span class="n">UTC</span> <span class="o">-</span><span class="n">Dfile</span><span class="o">.</span><span class="n">encoding</span><span class="o">=</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="o">-</span><span class="n">Djava</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">manager</span><span class="o">=</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">logging</span><span class="o">.</span><span class="n">log4j</span><span class="o">.</span><span class="n">jul</span><span class="o">.</span><span class="n">LogManager</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">baseTaskDir</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">metatron</span><span class="o">/</span><span class="n">data1</span><span class="o">/</span><span class="n">druid</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">task</span>
+
+ <span class="c1"># Peon properties</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">fork</span><span class="o">.</span><span class="n">property</span><span class="o">.</span><span class="n">druid</span><span class="o">.</span><span class="n">monitoring</span><span class="o">.</span><span class="n">monitors</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;com.metamx.metrics.JvmMonitor&quot;</span><span class="p">]</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">fork</span><span class="o">.</span><span class="n">property</span><span class="o">.</span><span class="n">druid</span><span class="o">.</span><span class="n">processing</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">sizeBytes</span><span class="o">=</span><span class="mi">536870912</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">fork</span><span class="o">.</span><span class="n">property</span><span class="o">.</span><span class="n">druid</span><span class="o">.</span><span class="n">processing</span><span class="o">.</span><span class="n">numThreads</span><span class="o">=</span><span class="mi">2</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">fork</span><span class="o">.</span><span class="n">property</span><span class="o">.</span><span class="n">druid</span><span class="o">.</span><span class="n">segmentCache</span><span class="o">.</span><span class="n">locations</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/home/metatron/data1/druid/var/segment-cache&quot;</span><span class="p">,</span> <span class="s2">&quot;maxSize&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}]</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">fork</span><span class="o">.</span><span class="n">property</span><span class="o">.</span><span class="n">druid</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">http</span><span class="o">.</span><span class="n">numThreads</span><span class="o">=</span><span class="mi">50</span>
+
+ <span class="n">druid</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">capacity</span><span class="o">=</span><span class="mi">20</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">ip</span><span class="o">=</span><span class="n">localhost</span>
+ <span class="n">druid</span><span class="o">.</span><span class="n">worker</span><span class="o">.</span><span class="n">version</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="modify-deploy-envirnonment-script">
+<h2>8.Modify deploy envirnonment script<a class="headerlink" href="#modify-deploy-envirnonment-script" title="제목 주소">¶</a></h2>
+<div class="section" id="druid-dist-druid-dist-v2-druid-bootstrap-scripts-druid-env-sh">
+<h3>./druid_dist/druid_dist_v2/druid_bootstrap/scripts/druid-env.sh<a class="headerlink" href="#druid-dist-druid-dist-v2-druid-bootstrap-scripts-druid-env-sh" title="제목 주소">¶</a></h3>
+<blockquote>
+<div><div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1">#!/bin/sh</span>
+ <span class="n">DRUID_HADOOP_CONF_DIR</span><span class="o">=</span><span class="s2">&quot;/usr/lib/hadoop/etc/hadoop&quot;</span>
+ <span class="n">DRUID_LOG_DIR</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">metatron</span><span class="o">/</span><span class="n">data1</span><span class="o">/</span><span class="n">druid</span><span class="o">/</span><span class="n">var</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="deploy-to-each-cluster-server">
+<h2>9.Deploy to each cluster server<a class="headerlink" href="#deploy-to-each-cluster-server" title="제목 주소">¶</a></h2>
+<blockquote>
+<div><div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1">#Move modified conf and script file to binary directory</span>
+ <span class="o">./</span><span class="n">druid_dist</span><span class="o">/</span><span class="n">druid_dist_v2</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">sh</span> <span class="p">{</span><span class="n">binary</span> <span class="n">directory</span> <span class="n">name</span><span class="p">}</span>
+
+ <span class="c1">#Deploy to each cluster server</span>
+ <span class="o">./</span><span class="n">druid_dist</span><span class="o">/</span><span class="n">druid_dist_v2</span><span class="o">/</span><span class="n">dist</span><span class="o">.</span><span class="n">sh</span> <span class="p">{</span><span class="n">binary</span> <span class="n">directory</span> <span class="n">name</span><span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+<div class="section" id="start-up-druid-services">
+<h2>10.Start up Druid services<a class="headerlink" href="#start-up-druid-services" title="제목 주소">¶</a></h2>
+<blockquote>
+<div><div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1">#Start up</span>
+ <span class="o">./</span><span class="n">druid_dist</span><span class="o">/</span><span class="n">druid_dist_v2</span><span class="o">/</span><span class="n">run_druid</span><span class="o">.</span><span class="n">sh</span>
+
+ <span class="c1">#Status monitoring</span>
+ <span class="o">./</span><span class="n">druid_dist</span><span class="o">/</span><span class="n">druid_dist_v2</span><span class="o">/</span><span class="n">status_druid</span><span class="o">.</span><span class="n">sh</span>
+
+ <span class="c1">#Stop druid</span>
+ <span class="o">./</span><span class="n">druid_dist</span><span class="o">/</span><span class="n">druid_dist_v2</span><span class="o">/</span><span class="n">kill_druid</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="console.html" class="btn btn-neutral float-right" title="Console" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Metatron Engine (Druid)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, SKT
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'0.4.2',
+              LANGUAGE:'ko',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

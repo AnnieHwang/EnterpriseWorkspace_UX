@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>기본 어플리케이션 Install &mdash; Metatron Discovery Install Docs 0.4.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/layout.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/layout.css" type="text/css" />
+    <link rel="index" title="색인" href="../genindex.html" />
+    <link rel="search" title="검색" href="../search.html" />
+    <link rel="next" title="Hadoop" href="../part02/index.html" />
+    <link rel="prev" title="기본 환경" href="index.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2019-12-05
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../part00/index.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">기본 환경</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">기본 어플리케이션 Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#java">Java</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mysql">MySQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zookeper">Zookeper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kafka">Kafka</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spark">Spark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ansible">Ansible</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../part02/index.html">Hadoop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part03/index.html">Metatron Engine (Druid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part04/index.html">Metatron Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part05/index.html">Metatron Anomaly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part06/index.html">Metatron Integrator</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Metatron Discovery Install Docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">기본 환경</a> &raquo;</li>
+        
+      <li>기본 어플리케이션 Install</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/part01/overview.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="install">
+<h1>기본 어플리케이션 Install<a class="headerlink" href="#install" title="제목 주소">¶</a></h1>
+<div class="section" id="java">
+<h2>Java<a class="headerlink" href="#java" title="제목 주소">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>version은 openJDK1.8만 가능합니다.</li>
+<li>현재 Metatron에서는 1.8.0_232-b09를 테스트 어플리케이션으로 사용하고 있습니다.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="mysql">
+<h2>MySQL<a class="headerlink" href="#mysql" title="제목 주소">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Metatron Discovery에서 내장 DB로 사용하고 있습니다. (내장DB는 H2DB로도 가능합니다.)</li>
+<li>Version은 5.5 이상 가능합니다. (설치 또는 JDBC 지정된 디렉토리에 넣는것도 가능합나다. Metatron에서는 Config 파일에 내장DB 경로가 필요합니다.)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="zookeper">
+<h2>Zookeper<a class="headerlink" href="#zookeper" title="제목 주소">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>암바리로 깔기를 권장합니다.</li>
+<li>druid, Kafka, Hadoop에서 필요한 어플리케이션입니다.</li>
+<li>현재 Metatron에서는 3.4.8를 테스트 어플리케이션으로 사용하고 있습니다.</li>
+<li>Install Apache Zookeeper to act as a Distributed Coordinator.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="kafka">
+<h2>Kafka<a class="headerlink" href="#kafka" title="제목 주소">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>암바리로 깔기를 권장합니다.</li>
+<li>Version은 1.0 이상 사용이 가능합니다.</li>
+<li>Metatron에서는 2점대를 테스트 어플리케이션으로 사용하고 있습니다. (1점대 보단 2점대가 성능이 훨씬 좋아 사용을 권장합니다.)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="spark">
+<h2>Spark<a class="headerlink" href="#spark" title="제목 주소">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>암바리로 깔기를 권장합니다.</li>
+<li>설치는 Option 입니다.</li>
+<li>Metatron Discovery 내 Preparation 기능에서 고성능 가속 기능을 사용하기 위헤 필요합니다. (만약 이 기능을 사용하지 않고 Hive를 사용하신다면 해당 어플리케이션은 필요없습니다.)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="ansible">
+<h2>Ansible<a class="headerlink" href="#ansible" title="제목 주소">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>배포를 지원하기 위해 설치를 하지만, 설치는 Option입니다.</li>
+<li>여러 서버에 하나하나 깔기 힘들기 때문에 한꺼번에 설정하려는 취지로 설치를 합니다.</li>
+<li>Ansible is used to deploy Druid to clustered servers. Ansible communicates with client computers through SSH, so each server you want to manage should be accessible from the Ansible server without password.</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../part02/index.html" class="btn btn-neutral float-right" title="Hadoop" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="기본 환경" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, SKT
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'0.4.2',
+              LANGUAGE:'ko',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

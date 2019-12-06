@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>기본 Install 순서 가이드 &mdash; Metatron Discovery Install Docs 0.4.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/layout.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/layout.css" type="text/css" />
+    <link rel="index" title="색인" href="../genindex.html" />
+    <link rel="search" title="검색" href="../search.html" />
+    <link rel="next" title="사용예" href="example.html" />
+    <link rel="prev" title="Introduction" href="overview.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2019-12-05
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Overview</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">기본 Install 순서 가이드</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step1-java">Step1. Java</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step2-mysql">Step2. MySQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step3-zookeper">Step3. Zookeper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step4-ansible-option">Step4. Ansible (Option)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step5-hadoop">Step5. Hadoop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step6-metatron-engine-druid">Step6. Metatron Engine (Druid)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step7-kafka">Step7. Kafka</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step8-spark-option">Step8. Spark (Option)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step9-jupyter-option">Step9. Jupyter (Option)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step10-zeppelin-option">Step10. Zeppelin (Option)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step11-metatron-discovery">Step11. Metatron Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step12-metatron-anomaly">Step12. Metatron Anomaly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step13-oozie">Step13. Oozie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step14-active-mq">Step14. Active MQ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step15-metatron-integrator">Step15. Metatron Integrator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="example.html">사용예</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../part01/index.html">기본 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part02/index.html">Hadoop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part03/index.html">Metatron Engine (Druid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part04/index.html">Metatron Discovery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part05/index.html">Metatron Anomaly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part06/index.html">Metatron Integrator</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Metatron Discovery Install Docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Overview</a> &raquo;</li>
+        
+      <li>기본 Install 순서 가이드</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/part00/install.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="install">
+<h1>기본 Install 순서 가이드<a class="headerlink" href="#install" title="제목 주소">¶</a></h1>
+<div class="section" id="step1-java">
+<h2>Step1. Java<a class="headerlink" href="#step1-java" title="제목 주소">¶</a></h2>
+<p>Metatron Engine(Druid)를 위해서는 openJDK1.8만 사용 가능</p>
+</div>
+<div class="section" id="step2-mysql">
+<h2>Step2. MySQL<a class="headerlink" href="#step2-mysql" title="제목 주소">¶</a></h2>
+<p>Metatron Discovery의 내장 DB로 사용됨</p>
+</div>
+<div class="section" id="step3-zookeper">
+<h2>Step3. Zookeper<a class="headerlink" href="#step3-zookeper" title="제목 주소">¶</a></h2>
+<p>Druid, Kafka, Hadoop에서 필요함</p>
+</div>
+<div class="section" id="step4-ansible-option">
+<h2>Step4. Ansible (Option)<a class="headerlink" href="#step4-ansible-option" title="제목 주소">¶</a></h2>
+<dl class="docutils">
+<dt>Ansible is used to deploy Druid to clustered servers. Ansible communicates with client computers through SSH, so each server you want to manage should be accessible from the Ansible server without password.</dt>
+<dd><ul class="first last simple">
+<li>배포 지원용임.</li>
+<li>여러 서버에 하나 하나 설치에 어려움이 있는 경우 한꺼번에 설정할 수 있어 설치함</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="step5-hadoop">
+<h2>Step5. Hadoop<a class="headerlink" href="#step5-hadoop" title="제목 주소">¶</a></h2>
+<p>분산환경에서 사용하기 위해서는 필요한 어플리케이션임 (단, 싱글일땐 필요없음)</p>
+<blockquote>
+<div><ul class="simple">
+<li>필요사항: Java, Zookeper가 필요함</li>
+<li>설치가 까다로움.(현재 Druid는 Hadoop 2.7로 compile되어 있음)</li>
+<li>Hadoop과 함께 설치되는 Hive는 Metatron Discovery내에서 StagingDB(Slave DB)로 사용됨</li>
+<li>Hive 이외의 yarn 등이 설치되어야 함</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="step6-metatron-engine-druid">
+<h2>Step6. Metatron Engine (Druid)<a class="headerlink" href="#step6-metatron-engine-druid" title="제목 주소">¶</a></h2>
+<p>Metatron Discovery에 필요함</p>
+<blockquote>
+<div><ul class="simple">
+<li>Apache Druid와 다름. 사상은 같으나, 이미 소스가 많이 갈라</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="step7-kafka">
+<h2>Step7. Kafka<a class="headerlink" href="#step7-kafka" title="제목 주소">¶</a></h2>
+<p>Metatron Discovery 내 Engine Monitoring을 위해 필요함. 실시간 데이터 처리 시를 위해 필요함</p>
+</div>
+<div class="section" id="step8-spark-option">
+<h2>Step8. Spark (Option)<a class="headerlink" href="#step8-spark-option" title="제목 주소">¶</a></h2>
+<p>Metatron Discovery 내 Preparation에 고속 처리를 위해 사용할 경우 필요함</p>
+</div>
+<div class="section" id="step9-jupyter-option">
+<h2>Step9. Jupyter (Option)<a class="headerlink" href="#step9-jupyter-option" title="제목 주소">¶</a></h2>
+<p>Metatron Discovery 내 Notebook 사용에 필요함</p>
+</div>
+<div class="section" id="step10-zeppelin-option">
+<h2>Step10. Zeppelin (Option)<a class="headerlink" href="#step10-zeppelin-option" title="제목 주소">¶</a></h2>
+<p>Metatron Discovery 내 Notebook 사용에 필요함</p>
+</div>
+<div class="section" id="step11-metatron-discovery">
+<h2>Step11. Metatron Discovery<a class="headerlink" href="#step11-metatron-discovery" title="제목 주소">¶</a></h2>
+</div>
+<div class="section" id="step12-metatron-anomaly">
+<h2>Step12. Metatron Anomaly<a class="headerlink" href="#step12-metatron-anomaly" title="제목 주소">¶</a></h2>
+</div>
+<div class="section" id="step13-oozie">
+<h2>Step13. Oozie<a class="headerlink" href="#step13-oozie" title="제목 주소">¶</a></h2>
+<p>Metatron Integrator에 필요함.
+배치 프로세스 어플리케이션임</p>
+</div>
+<div class="section" id="step14-active-mq">
+<h2>Step14. Active MQ<a class="headerlink" href="#step14-active-mq" title="제목 주소">¶</a></h2>
+<p>Metatron Integrator에 필요함</p>
+</div>
+<div class="section" id="step15-metatron-integrator">
+<h2>Step15. Metatron Integrator<a class="headerlink" href="#step15-metatron-integrator" title="제목 주소">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="example.html" class="btn btn-neutral float-right" title="사용예" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="overview.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, SKT
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'0.4.2',
+              LANGUAGE:'ko',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
